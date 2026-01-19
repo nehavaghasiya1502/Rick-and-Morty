@@ -1,0 +1,162 @@
+.rm-footer {
+  background: radial-gradient(circle at top, #2a2f36, #15181d);
+  color: #9aa5b1;
+  padding: 100px 20px 40px;
+  text-align: center;
+  font-family: Arial, sans-serif;
+}
+
+/* Top stats */
+.rm-stats {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  font-size: 14px;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+.rm-stats span {
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.rm-stats span b {
+  color: white;
+  transition: 0.3s ease;
+}
+
+.rm-stats span:hover,
+.rm-stats span:hover b {
+  color: orange;
+}
+
+.rm-stats .active {
+  color: orange;
+}
+
+/* Server status */
+.rm-server {
+  margin: 20px 0 40px;
+  font-size: 14px;
+  transition: 0.3s ease;
+  cursor: pointer;
+}
+.rm-server:hover{
+    color: orange;
+}
+.status-dot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  background: #02e75e;   /* green */
+  border-radius: 50%;
+  margin-left: 8px;
+  /* box-shadow: 0 0 8px #00ff66;  glow effect */
+}
+
+.rm-powered a {
+  text-decoration: none;
+  color: inherit;
+}
+
+
+/* Powered by */
+.rm-powered {
+  display: flex;
+  justify-content: center;
+  gap: 60px;
+  margin-bottom: 30px;
+  align-items: center;
+  cursor: pointer;
+}
+
+.rm-powered div {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.rm-powered img {
+  width: 28px;
+}
+
+/* Social icons */
+.rm-social {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  font-size: 18px;
+  margin-bottom: 20px;
+  color: #aaa;
+  transition: 0.3s ease;
+}
+
+.rm-social svg:hover {
+  color: orange;
+  cursor: pointer;
+}
+
+/* Copyright */
+.rm-copy {
+  font-size: 14px;
+  color: #7f8a96;
+  
+}
+
+.rm-copy b {
+  color: white;
+  border-bottom: 0.1px solid orange;
+   transition: 0.3s ease;
+}
+.rm-copy b:hover{
+    border: none;
+    color: orange;
+}
+/* ========================= */
+/* 📱 Mobile (max 768px) */
+/* ========================= */
+@media (max-width: 768px) {
+
+  .rm-footer {
+    padding: 60px 15px 30px;
+  }
+
+  .rm-stats {
+    flex-direction: column;
+    gap: 12px;
+    font-size: 13px;
+  }
+
+  .rm-server {
+    font-size: 13px;
+    margin: 15px 0 30px;
+  }
+
+  .rm-powered {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .rm-powered div {
+    justify-content: center;
+  }
+
+  .rm-social {
+    font-size: 20px;
+    gap: 25px;
+  }
+
+  .rm-copy {
+    font-size: 12px;
+    line-height: 1.6;
+  }
+}
+@media (max-width: 1024px) {
+  .rm-stats {
+    gap: 25px;
+  }
+
+  .rm-powered {
+    gap: 40px;
+  }
+}

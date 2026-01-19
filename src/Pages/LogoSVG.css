@@ -1,0 +1,11 @@
+.logo {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.logo svg {
+  width: 45px;      
+  height: 45px;
+  max-height: 45px;
+}

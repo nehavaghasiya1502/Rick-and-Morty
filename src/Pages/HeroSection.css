@@ -1,0 +1,43 @@
+.hero {
+  position: relative;
+  width: 100%;
+  height: 45vh;
+  background: white;
+  overflow: hidden;
+}
+
+/* SVG background */
+.hero-bg {
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0.1;
+  z-index: 1;
+}
+
+.hero-bg svg {
+  width: 320px;     
+  height: auto;
+}
+
+/* Text over SVG */
+.hero-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.hero-content h1 {
+  font-size:110px;
+  font-weight: 800;
+  color: black;
+  text-align: center;
+}

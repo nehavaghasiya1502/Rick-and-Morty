@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./CharacterGrid.css";
-import { Link } from "react-router-dom";
-
+import CharacterCard from "./CharacterCard";
 
 const CharacterGrid = () => {
   const [characters, setCharacters] = useState([]);
@@ -10,14 +9,46 @@ const CharacterGrid = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await fetch("https://rickandmortyapi.com/api/character");
-        const data = await res.json();
-        console.log("API DATA:", data);
+        setLoading(true);
 
-        if (data && data.results) {
-          setCharacters(data.results.slice(0, 6));
-        }
+        const res1 = await fetch("https://rickandmortyapi.com/api/character?page=1");
+        const res2 = await fetch("https://rickandmortyapi.com/api/character?page=2");
+        const res3 = await fetch("https://rickandmortyapi.com/api/character?page=3");
+
+        const data1 = await res1.json();
+        const data2 = await res2.json();
+        const data3 = await res3.json();
+
+        const allCharacters = [
+          ...data1.results,
+          ...data2.results,
+          ...data3.results,
+        ];
+
+        const alive = allCharacters.filter(c => c.status === "Alive");
+        const dead = allCharacters.filter(c => c.status === "Dead");
+        const unknown = allCharacters.filter(c => c.status === "unknown");
+
+        const mixedFixed = [
+          alive[0],
+          dead[0],
+          unknown[0],
+          alive[1],
+          dead[1],
+          unknown[1],
+        ].filter(Boolean);
+
+        const updatedCharacters = await Promise.all(
+          mixedFixed.map(async (char) => {
+            const res = await fetch(char.episode[0]);
+            const epData = await res.json();
+            return { ...char, firstEpisodeName: epData.name };
+          })
+        );
+
+        setCharacters(updatedCharacters);
         setLoading(false);
+
       } catch (error) {
         console.log("Fetch error:", error);
         setLoading(false);
@@ -34,64 +65,10 @@ const CharacterGrid = () => {
   return (
     <div className="rm-grid">
       {characters.map((char) => (
-        <div className="rm-card" key={char.id}>
-          <img src={char.image} alt={char.name} />
-
-          <div className="rm-info">
-            <h2>
-              <Link to={`/character/${char.id}`} className="rm-link">
-                {char.name}
-              </Link>
-            </h2>
-
-            <p className="status">
-              <span
-                className={
-                  char.status === "Alive"
-                    ? "dot green"
-                    : char.status === "Dead"
-                      ? "dot red"
-                      : "dot gray"
-                }
-              ></span>
-              {char.status} - {char.species}
-            </p>
-
-            <p className="label">Last known location:</p>
-            {char.location.url ? (
-              <p>
-                <Link
-                  to={`/location/${char.location.url.split("/").pop()}`}
-                  className="rm-link"
-                >
-                  {char.location.name}
-                </Link>
-              </p>
-            ) : (
-              <p>{char.location.name}</p>
-            )}
-
-
-            <p className="label">First seen in:</p>
-            {char.episode.length > 0 ? (
-              <p>
-                <Link
-                  to={`/episode/${char.episode[0].split("/").pop()}`}
-                  className="rm-link"
-                >
-                  Open First Episode
-                </Link>
-              </p>
-            ) : (
-              <p>Unknown</p>
-            )}
-          </div>
-        </div>
+        <CharacterCard key={char.id} char={char} />
       ))}
     </div>
   );
-
-
 };
 
 export default CharacterGrid;

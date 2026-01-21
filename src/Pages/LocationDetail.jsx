@@ -18,7 +18,7 @@ const LocationDetail = () => {
       background: "#000",
       minHeight: "100vh",
       color: "white",
-    //   padding: "80px 100px",
+      padding: "2px",
       fontFamily: "monospace",
       whiteSpace: "pre-wrap"
     }}>

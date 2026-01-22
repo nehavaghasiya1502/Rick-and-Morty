@@ -41,3 +41,63 @@
   color: black;
   text-align: center;
 }
+/* ========================= */
+/* Responsive Hero Section */
+/* ========================= */
+
+/* Laptop / small desktop */
+@media (max-width: 1200px) {
+  .hero-content h1 {
+    font-size: 90px;
+  }
+
+  .hero-bg svg {
+    width: 260px;
+  }
+}
+
+/* Tablet */
+@media (max-width: 992px) {
+  .hero {
+    height: 40vh;
+  }
+
+  .hero-content h1 {
+    font-size: 70px;
+  }
+
+  .hero-bg svg {
+    width: 220px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .hero {
+    height: 35vh;
+  }
+
+  .hero-content h1 {
+    font-size: 50px;
+  }
+
+  .hero-bg svg {
+    width: 180px;
+  }
+}
+
+/* Small mobile */
+@media (max-width: 480px) {
+  .hero {
+    height: 30vh;
+  }
+
+  .hero-content h1 {
+    font-size: 34px;
+    line-height: 1.2;
+  }
+
+  .hero-bg svg {
+    width: 140px;
+  }
+}

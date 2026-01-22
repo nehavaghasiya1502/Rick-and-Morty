@@ -66,3 +66,54 @@
   background: orange;
   color: white;
 }
+/* ========================= */
+/* Responsive Header */
+/* ========================= */
+
+/* Tablets */
+@media (max-width: 992px) {
+  .header {
+    padding: 10px 25px;
+  }
+
+  .menu {
+    gap: 14px;
+  }
+
+  .header-right {
+    gap: 15px;
+  }
+}
+
+/* Mobiles */
+@media (max-width: 768px) {
+  .header {
+    padding: 10px 15px;
+  }
+
+  .menu {
+    gap: 10px;
+  }
+
+  .menu li a {
+    font-size: 14px;
+  }
+
+  .support-btn {
+    padding: 6px 12px;
+    font-size: 14px;
+  }
+}
+
+/* Very small mobiles */
+@media (max-width: 480px) {
+  .header {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .header-right {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
